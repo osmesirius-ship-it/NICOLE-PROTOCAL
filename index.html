@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicole Protocol Console</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Nicole Protocol</p>
+        <h1>Modular Governance Console</h1>
+        <p class="lede">
+          Explore how governance, control, and execution layers align to run mandates. Drag modules to view dependencies and inspect sample workflows.
+        </p>
+      </div>
+      <div class="header-actions">
+        <button id="reset-layout" class="ghost">Reset layout</button>
+        <button id="refresh-data">Refresh data</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="panel" aria-label="Governance layers overview">
+        <div class="panel-header">
+          <h2>Governance layers</h2>
+          <p>Strategic → Tactical → Operational responsibilities</p>
+        </div>
+        <div id="layer-grid" class="layer-grid"></div>
+      </section>
+
+      <section class="panel" aria-label="Modules and adapters">
+        <div class="panel-header">
+          <h2>Modules</h2>
+          <p>Composable services grouped by layer</p>
+        </div>
+        <div id="module-grid" class="module-grid"></div>
+      </section>
+
+      <section class="panel" aria-label="Workflow simulator">
+        <div class="panel-header">
+          <div>
+            <h2>Workflow simulator</h2>
+            <p>Trace mandates end-to-end and inspect evidence</p>
+          </div>
+          <div class="filters">
+            <label>
+              Workflow
+              <select id="workflow-filter"></select>
+            </label>
+            <label>
+              Risk tier
+              <select id="risk-filter">
+                <option value="all">All</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div id="workflow-timeline" class="timeline"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
