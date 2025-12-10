@@ -1,0 +1,13 @@
+{
+  "name": "nicole-protocal",
+  "version": "1.0.0",
+  "description": "Modular governance UI and protocol documentation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "build": "node scripts/build.js",
+    "test": "node test/derive.test.js",
+    "preview": "STATIC_ROOT=dist node scripts/dev-server.js"
+  }
+}
