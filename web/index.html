@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nicole Protocol Gateway</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Nicole Protocol Gateway</h1>
+    <section class="card">
+      <h2>Bootstrap Identity</h2>
+      <label>Name <input id="identity-name" value="Nicole" /></label>
+      <label>Role Tag <input id="identity-role" value="Recursive Systems Architect" /></label>
+      <button id="btn-identity">Load Identity</button>
+      <pre id="identity-result" class="log"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Store Context Chunk</h2>
+      <textarea id="chunk-content" rows="3" placeholder="Add a context snippet"></textarea>
+      <label>Metadata (JSON) <input id="chunk-meta" value='{"source":"demo"}' /></label>
+      <button id="btn-chunk">Store Chunk</button>
+      <pre id="chunk-result" class="log"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Run Ingest</h2>
+      <textarea id="ingest-query" rows="3" placeholder="Ask a question"></textarea>
+      <label>Target format <input id="target-format" value="spec_document" /></label>
+      <label>DA style <input id="da-style" value="DA_13" /></label>
+      <label>Use symbolic overlay <input type="checkbox" id="symbolic-toggle" /></label>
+      <button id="btn-ingest">Submit</button>
+      <pre id="ingest-result" class="log"></pre>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
