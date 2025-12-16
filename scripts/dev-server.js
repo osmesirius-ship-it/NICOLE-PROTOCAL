@@ -1,7 +1,7 @@
 import { createServer } from 'node:http';
 import { createReadStream, existsSync } from 'node:fs';
 import { stat } from 'node:fs/promises';
-import { extname, join, resolve } from 'node:path';
+import { extname, join, resolve, sep } from 'node:path';
 
 const root = resolve(process.env.STATIC_ROOT || process.argv[2] || process.cwd());
 const port = process.env.PORT || 5173;
@@ -20,9 +20,16 @@ function sendFile(res, filePath) {
 }
 
 async function handleRequest(req, res) {
-  const urlPath = req.url.split('?')[0];
+  const urlPath = decodeURIComponent(req.url.split('?')[0]);
   const target = urlPath === '/' ? 'index.html' : urlPath.slice(1);
-  const candidate = join(root, target);
+  const candidate = resolve(root, target);
+  const rootWithSep = root.endsWith(sep) ? root : `${root}${sep}`;
+
+  if (candidate !== root && !candidate.startsWith(rootWithSep)) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
 
   try {
     const info = await stat(candidate);
